@@ -28,4 +28,4 @@ The project contains the following files,
 
 3. Go to http://127.0.0.1:3001/ to check out the API.
 
-![Webapp Screenshot](https://raw.githubusercontent.com/amirmasoudsfd/disaster_response_app/master/disasterapp_screenshot.pnj)
+![Webapp Screenshot](https://github.com/amirmasoudsfd/disaster-response-app/raw/master/disasterapp_screenshot.png)
