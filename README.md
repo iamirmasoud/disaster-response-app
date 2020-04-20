@@ -2,7 +2,7 @@
 
 ### Project Description:
 
-In this project, I built ETL and machine learning pipelines that is capable to curate the class of the messages. The pipeline is eventually built into a flask application. The project include a web app where an emergency worker can input a new message and get classification results in several categories (Multi-Label Classification). The landing page of the webapp also includes four visualizations of the training dataset built with plotly.
+In this project, I built ETL, NLP, and machine learning pipelines that is capable to curate the class of the messages. The pipeline is eventually built into a flask application. The project include a web app where an emergency worker can input a new message and get classification results in several categories (Multi-Label Classification). The landing page of the webapp also includes four visualizations of the training dataset built with plotly.
 
 ### File Descriptions:
 The project contains the following files,
