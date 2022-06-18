@@ -5,15 +5,18 @@ from collections import Counter
 import pandas as pd
 import plotly
 from disasterapp import app
-from disasterapp.tokenizer_function import tokenize_only_english
 from flask import jsonify, render_template, request
 from plotly.graph_objs import Bar
 from sqlalchemy import create_engine
-from util_scripts import tokenizer_function
-from util_scripts.tokenizer_function import Tokenizer, tokenize
+from nltk.corpus import stopwords
 
-MODEL_PATH = "../models/classifier_me.pkl"
-DB_PATH = "sqlite:///../data/DisasterResponse.db"
+from utils import tokenize_only_english
+
+from utils import tokenize
+
+MODEL_PATH = "./models/classifier_me.pkl"
+DB_PATH = "sqlite:///data/DisasterResponse.db"
+STOPWORDS = list(set(stopwords.words("english")))
 
 
 @app.before_first_request
@@ -21,7 +24,6 @@ def load_model_data():
     global df
     global model
     # load data
-
     engine = create_engine(DB_PATH)
     df = pd.read_sql_table("DisasterResponse", engine)
     with open(MODEL_PATH, "rb") as fp:
@@ -33,7 +35,7 @@ def load_model_data():
 @app.route("/index")
 def index():
     # extract data needed for visuals
-    # Message counts of different generes
+    # Message counts of different genres
     genre_counts = df.groupby("genre").count()["message"]
     genre_names = list(genre_counts.index)
     genre_counts = genre_counts.to_list()
@@ -116,10 +118,10 @@ def index():
 
     # encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
-    graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
+    graph_json = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
 
     # render web page with plotly graphs
-    return render_template("master.html", ids=ids, graphJSON=graphJSON)
+    return render_template("master.html", ids=ids, graphJSON=graph_json)
 
 
 # web page that handles user query and displays model results

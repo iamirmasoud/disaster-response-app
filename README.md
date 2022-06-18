@@ -1,4 +1,4 @@
-# Disaster Response Pipeline on Figure Eight data
+# Disaster Response Message Classification for Figure Eight Dataset
 
 ## Project Overview
 
@@ -48,16 +48,16 @@ jupyter notebook
 ## Files Descriptions
 The project contains the following files,
 
-*  [1_ETL_Pipeline Notebook](1_ETL_Pipeline.ipynb): Notebook experiment for the ETL pipelines
+* [1_ETL_Pipeline Notebook](1_ETL_Pipeline.ipynb): Notebook experiment for the ETL pipelines
 * [2_ML_Pipeline Notebook](2_ML_Pipeline.ipynb): Notebook experiment for creating and evaluating the Machine Learning and NLP pipelines.
-* [process_data.py](process_data.py): The ETL pipeline used to process data in preparation for model building.
-* [train_classifier.py](train_classifier.py): The Machine Learning pipeline used to fit, tune, evaluate, and export the model to a Python pickle (pickle is not uploaded to the repo due to size constraints on Github).
+* [process_data.py](app/process_data.py): The ETL pipeline used to process data in preparation for model building.
+* [train_classifier.py](app/train_classifier.py): The Machine Learning pipeline used to fit, tune, evaluate, and export the model to a Python pickle (pickle is not uploaded to the repo due to size constraints on Github).
 * __app__ directory: Flask application folder. `run.py` starts the python server for the web app and prepare visualizations.
 
 
 ## Usage:
 
-1. Run the following commands in the project's root directory to set up your database and model.
+1. Change directory to `app` directory and run the following commands to set up your database and model.
 
 * To run ETL pipeline that cleans data and stores in SQLite database:
 
@@ -79,8 +79,14 @@ python ./train_classifier.py data/DisasterResponse.db models/classifier_me.pkl
 ![Webapp Screenshot](assets/disasterapp_screenshot.png)
 
 
+## Results
+Below is the performance metric for different categories of messages:
 
-## Examples
+![Example](assets/performance.png)
+
+and the model achieved a f1-score of 0.94 in average over all categories.
+
+### Examples
 Here are some examples of message classification:
 
 Type in: `We have a lot of problem at Delma 75 Avenue Albert Jode, those people need water and food.`
@@ -94,4 +100,4 @@ More examples:
 
 
 
-*Note:* This project is part of Udacity [Data Scientist Nanodegree Program](https://www.udacity.com/course/data-scientist-nanodegree--nd025).
+**Note:** This project is part of Udacity [Data Scientist Nanodegree Program](https://www.udacity.com/course/data-scientist-nanodegree--nd025).
